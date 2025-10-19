@@ -12,8 +12,6 @@ const socketIo = require('socket.io');
 const noCache = require('./middleware/noCache');
 const Course = require('./models/Course');
 const paymentRoutes2 = require('./routes/paymentdetailroute');
-const MongoStore = require('connect-mongo');
-
 
 if(process.env.NODE_ENV!="production"){
 require('dotenv').config();}
@@ -32,12 +30,7 @@ const port = process.env.PORT || 3000;
 
 // Connect to MongoDB
 connectDB();
-app.use(session({
-  store: MongoStore.create({
-    mongoUrl: process.env.mongo_url,
-     // See below for details
-  })
-}));
+
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
