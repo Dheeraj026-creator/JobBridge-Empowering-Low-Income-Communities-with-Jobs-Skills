@@ -20,7 +20,7 @@ const connectDB = require('./config/db');
 const configurePassport = require('./config/passport');
 const sessionConfig = require('./config/session');
 
-const IdModel = require('./models/IdModel');
+const IdModel = require('./models/Idmodel');
 
 // Initialize app
 const app = express();

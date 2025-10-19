@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const IdModel = require('../models/IdModel');
+const IdModel = require('../models/Idmodel');
 const passport = require('passport');
 
 exports.getSignup = (req, res) => res.render('signup.ejs');
