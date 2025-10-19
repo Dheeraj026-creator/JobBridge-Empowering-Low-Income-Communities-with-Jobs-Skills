@@ -1,0 +1,8 @@
+const User = require('../models/User');
+const LocalStrategy = require('passport-local').Strategy;
+
+module.exports = (passport) => {
+  passport.use(User.createStrategy());
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
+};

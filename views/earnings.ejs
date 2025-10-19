@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Earnings - Job Bridge</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #007bff;
+      color: white;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    .container {
+      margin-top: 50px;
+      max-width: 800px;
+    }
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .money {
+      font-weight: bold;
+      color: #28a745;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 576px) {
+      .card {
+        padding: 15px;
+      }
+      .money {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div>
+      <h1 style="margin:0;">Job Bridge</h1>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/courses">Courses</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Top Earnings</h1>
+
+    <% if (!users || users.length === 0) { %>
+      <p class="text-center text-muted">No users found.</p>
+    <% } else { %>
+      <% users.forEach((user, index) => { %>
+        <div class="card mb-3 p-3">
+          <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+              <h5 class="mb-0"><%= index + 1 %>. <%= user.name %></h5>
+            </div>
+            <div class="money">₹ <%= user.money %></div>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+
+</body>
+</html>

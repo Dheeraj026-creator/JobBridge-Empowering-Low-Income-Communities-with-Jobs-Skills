@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Users Billing - JobBridge Admin</title>
+  <style>
+    /* General styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #007bff;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    /* Payment card styles */
+    .payment-card {
+      background-color: #f1f1f1;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .payment-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .payment-card h3 {
+      margin: 0 0 10px 0;
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+
+    .payment-card p {
+      margin: 5px 0;
+      word-break: break-word;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      nav ul li {
+        margin-left: 0;
+        margin-bottom: 8px;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      .payment-card {
+        padding: 15px;
+      }
+
+      .payment-card h3 {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav h1 {
+        font-size: 1.2rem;
+      }
+
+      .payment-card {
+        padding: 10px;
+      }
+
+      .payment-card h3 {
+        font-size: 0.95rem;
+      }
+
+      .payment-card p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>Admin Dashboard</h1>
+    <ul>
+      <li><a href="/admin">Home</a></li>
+      <li><a href="/admin/billingdetails">Billing Details</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>All Users Billing Details</h2>
+
+    <% if (payments.length === 0) { %>
+      <p>No payment records found.</p>
+    <% } %>
+
+    <% payments.forEach(payment => { %>
+      <div class="payment-card">
+        <h3><%= payment.courseName %></h3>
+        <p><strong>Student Name:</strong> <%= payment.studentName %></p>
+        <p><strong>Email:</strong> <%= payment.studentEmail %></p>
+        <p><strong>Payment ID:</strong> <%= payment.paymentId %></p>
+        <p><strong>Order ID:</strong> <%= payment.orderId %></p>
+        <p><strong>Signature:</strong> <%= payment.signature %></p>
+      </div>
+    <% }) %>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Job Bridge. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Bridge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #007bff;
+      color: white;
+    }
+    .navbar-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links li a:hover {
+      color: #ffdd57;
+    }
+    .user-info {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .user-info button {
+      background-color: #ff4747;
+      border: none;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .user-info button:hover {
+      background-color: #cc3d3d;
+    }
+    .content {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 20px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .content h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1.5rem 0;
+      text-align: center;
+      margin-top: auto;
+    }
+    .footer-container a {
+      color: #ffdd57;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      flex-wrap: wrap;
+    }
+    .footer-links li a {
+      color: #ffdd57;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .footer-links li a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 576px) {
+      .navbar-top {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-top">
+      <div class="logo">
+        <h1>Job Bridge</h1>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/upload">Upload a Job</a></li> 
+        <li><a href="/find">Find a Job</a></li>
+        <li><a href="/earnings">Top Earnings</a></li>
+        <li><a href="/userpaymentdetails">Course & Billings</a></li>
+        <% if (!user) { %>
+          <li><a href="/signup">Signup</a></li>
+          <li><a href="/login">Login</a></li>
+        <% } %>
+      </ul>
+
+      <% if (user) { %>
+        <div class="user-info">
+          <span>👋 Hello, <%= user.name %></span>
+          <form action="/logout" method="POST" style="display:inline;">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="content">
+    <h2>Welcome to Job Bridge</h2>
+    <p>Your gateway to exciting career opportunities.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2024 Job Bridge. All rights reserved.</p>
+      <p>For inquiries, contact us at <a href="mailto:info@jobbridge.com">info@jobbridge.com</a></p>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
